@@ -123,6 +123,31 @@ fn main() {
 // four.call();
 // six.call();
 
+
+// collection:-
+// Vector:-.......
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 // fn another_function(x:i16){
