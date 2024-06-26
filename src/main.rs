@@ -1,5 +1,9 @@
 // use std::io::{self};
 
+// use std::vec;
+
+use std::collections::HashMap;
+
 fn main() {
     // shadowing
     //Shadowing is different from marking a variable as mut because we’ll get a compile-time error
@@ -126,6 +130,62 @@ fn main() {
 
 // collection:-
 // Vector:-.......
+// Vectors allow us to store more than one value in a single data structure that puts all the values next to 
+// each other in memory and can only store value of the same type;
+
+// let mut v:Vec<i128>=Vec::new();
+// // using macro
+// // let v=vec![2,3,4];
+// v.push(5);
+// v.push(6);
+// v.push(7);
+// v.push(8);
+// v.push(59);
+// v.push(9);
+
+
+// reading elements of vectors 
+// let eight=v[8];  // it will throw an error
+// print!("{}",eight);
+
+// use option enum
+// let third:Option<&i128>=v.get(5);
+// match third {
+//     Some(third)=>println!("The third element is {third}"),
+//     None=>println!("There is no third element")
+// }
+// // using for loop 
+// for i in  &mut v{
+//     *i*=50;
+//     println!("{i}")
+// }
+
+//use enum to hold different types of value but as a single type in vector, if we know the types of value then we use vectors otherwise we go for traits
+// let v=vec![
+//     Student::name(String::from("Subhash")),
+//     Student::roll_number(2),
+// ];
+// let first=&v[0];
+
+//.........................................................................
+// HashMap
+let mut scores=HashMap::new();
+
+scores.insert(String::from("Blue"), 10);
+scores.insert(String::from("Yellow"), 50);
+
+// let team_name=String::from("Blue");
+// let score=scores.get(&team_name).copied().unwrap_or(0);
+
+
+// overwriting a Value
+scores.insert(String::from("Blue"), 30);
+
+// Adding a key and value only if a key isn't present
+scores.entry(String::from("Red")).or_insert(19);
+for (key,value) in &scores{
+    println!("{key}: {value}");
+}
 
 
 
@@ -235,10 +295,15 @@ fn main() {
 // }
 // impl IpAddrKind {
 //     fn call(&self){
-          
 //     }
 // }
 
+
+//  enum for vector implementation
+// enum Student{
+//     name(String),
+//     roll_number(i32),
+// }
 
 
 
