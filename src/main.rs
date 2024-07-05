@@ -6,6 +6,8 @@
 
 // use std::{fmt::{Debug, Display}};
 
+mod error;
+
 fn main() {
     // shadowing
     //Shadowing is different from marking a variable as mut because we’ll get a compile-time error
@@ -261,20 +263,32 @@ fn main() {
 // }
 // println!("r: {r}")
 
-let string1=String::from("abcd");
-let string2="xyz";
-let result=longest(string1.as_str(),string2);
-println!("The longest string is {result}");
+// let string1=String::from("abcd");
+// let string2="xyz";
+// let result=longest(string1.as_str(),string2);
+// println!("The longest string is {result}");
+
+
+
+//  errors handling
+error::opening_file();
+// handling error from the calling mod
+let returned_error=error::read_data_from_file();
+match returned_error {
+    Ok(content)=>println!("The content is {}",content),
+    Err(e)=>panic!("Error is {}",e)
+}
+
 
 
 }
-fn longest<'a>(x:& 'a str,y:& 'a str)->& 'a str{
-      if x.len()>y.len(){
-        x
-      }else{
-        y
-      }
-}
+// fn longest<'a>(x:& 'a str,y:& 'a str)->& 'a str{
+//       if x.len()>y.len(){
+//         x
+//       }else{
+//         y
+//       }
+// }
 
 
 // implmenting traits
