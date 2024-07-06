@@ -6,9 +6,59 @@
 
 // use std::{fmt::{Debug, Display}};
 
-mod error;
+use function::*;
 
+mod function;
+mod error;
+fn bar<T>(_:u32)->u32{
+0
+}
+fn foo(f:fn(u32)->u32){
+    println!("{}",std::mem::size_of_val(&f))
+}
 fn main() {
+    //  Function item;
+let  x=bar::<u32>;
+foo(bar::<u32>);
+println!("{}",std::mem::size_of_val(&x));
+// x=bar::<u32>;
+    //  Examining methods and assicated function of clousre module
+
+    let rectangle = Rectangle {
+        // Associated funcions are called using double colons
+        p1: Point::origin(),
+        p2: Point::new(3.0, 4.0),
+    };
+    // Methods are called using dot operator
+    println!("The area of the given rectangle: {}", rectangle.area());
+    println!(
+        "The perimeter of the given rectangle: {}",
+        rectangle.perimeter()
+    );
+
+    let mut square = Rectangle {
+        p1: Point::origin(),
+        p2: Point::new(1.0, 1.0),
+    };
+    //if we try to call the translate function with rectangle then it will give error saying that it requires mutable variable
+    //In transalte function we are taking slef as mutable self
+    // rectangle.translate(1.0, 2.0);
+    square.translate(1.0, 2.0);
+
+
+    //  Reading from the console
+    // let mut line=String::new();
+    // println!("{:?}",std::io::stdin().read_line(&mut line));
+    // println!("[{:?}]",line);
+
+    // Reading several lines from the console
+    // let mut text=format!("First: ");
+    // let inp=std::io::stdin();
+    // inp.read_line(&mut text).unwrap();
+    // text.push_str("Second: ");
+    // inp.read_line(&mut text).unwrap();
+    // println!("{}: {} bytes",text,text.len());
+
     // shadowing
     //Shadowing is different from marking a variable as mut because we’ll get a compile-time error
     //if we accidentally try to reassign to this variable without using the let keyword.
@@ -216,71 +266,75 @@ fn main() {
     //     }
     //     largest
     // }
-// generic function
-// fn largest<T:std::cmp::PartialOrd>(list:&[T])->&T{
-//   let mut largest=&list[0];
-//   for item in list{
-//     if largest<item{
-//         largest=item
-//     }
-//   }
-//   largest
-// }
+    // generic function
+    // fn largest<T:std::cmp::PartialOrd>(list:&[T])->&T{
+    //   let mut largest=&list[0];
+    //   for item in list{
+    //     if largest<item{
+    //         largest=item
+    //     }
+    //   }
+    //   largest
+    // }
 
-// generic struct
-// let integer=Point{x:5,y:7};
-// let float=Point{x:2.0,y:4.9};
-// let double=Pointer{x:3,y:9.8};
+    // generic struct
+    // let integer=Point{x:5,y:7};
+    // let float=Point{x:2.0,y:4.9};
+    // let double=Pointer{x:3,y:9.8};
 
-// generic enum
-// enum Option<T>{
-//     Some(T),
-//     None,
-// }
+    // generic enum
+    // enum Option<T>{
+    //     Some(T),
+    //     None,
+    // }
 
-//In method definition
-// let p=Point{x:3,y:4};
-// println!("{}",p.x())
+    //In method definition
+    // let p=Point{x:3,y:4};
+    // println!("{}",p.x())
 
+    //  Traits:- A trait defines functionality a particular type has and can share with other types.
+    // let rec1=Rectangle{
+    //     x:5,
+    //     y:6
+    // };
+    // notify(&rec1);
+    //print!("The area of the rectangle is {}",rec1.area());
 
+    //  Validating Refrences with Lifetimes
+    // let r;
+    // {
+    //     let x=6;
+    //     r=&x;
+    // }
+    // println!("r: {r}")
 
-//  Traits:- A trait defines functionality a particular type has and can share with other types.
-// let rec1=Rectangle{
-//     x:5,
-//     y:6
-// };
-// notify(&rec1);
-//print!("The area of the rectangle is {}",rec1.area());
+    // let string1=String::from("abcd");
+    // let string2="xyz";
+    // let result=longest(string1.as_str(),string2);
+    // println!("The longest string is {result}");
 
+    //  errors handling
+    // error::opening_file();
+    // // handling error from the calling mod
+    // let returned_error=error::read_data_from_file();
+    // match returned_error {
+    //     Ok(content)=>println!("The content is {}",content),
+    //     Err(e)=>panic!("Error is {}",e)
+    // }
 
+    // Basic cmd
 
-
-//  Validating Refrences with Lifetimes
-// let r;
-// {
-//     let x=6;
-//     r=&x;
-// }
-// println!("r: {r}")
-
-// let string1=String::from("abcd");
-// let string2="xyz";
-// let result=longest(string1.as_str(),string2);
-// println!("The longest string is {result}");
-
-
-
-//  errors handling
-error::opening_file();
-// handling error from the calling mod
-let returned_error=error::read_data_from_file();
-match returned_error {
-    Ok(content)=>println!("The content is {}",content),
-    Err(e)=>panic!("Error is {}",e)
-}
-
-
-
+    // let command_line=std::env::args();
+    // for argument in command_line{
+    //     println!("[{}]",argument);
+    // }
+    // // environment variables
+    // for var in std::env::vars(){
+    //     println!("[{}]=[{}]",var.0,var.1);
+    // }
+    // print!("[{:?}]",std::env::var("abcd"));
+    // std::env::set_var("abcd", "This is the value");
+    // print!("[{:?}]",std::env::var("abcd"));
 }
 // fn longest<'a>(x:& 'a str,y:& 'a str)->& 'a str{
 //       if x.len()>y.len(){
@@ -289,7 +343,6 @@ match returned_error {
 //         y
 //       }
 // }
-
 
 // implmenting traits
 // pub struct Rectangle{
@@ -313,7 +366,7 @@ match returned_error {
 
 //  Trait bound syntax
 // pub fn notify<T:CalculateArea>(item:&T){
-//     println!("Inside the trait bound syntax, 
+//     println!("Inside the trait bound syntax,
 //     The area of the item is {}",item.area());
 // }
 
@@ -328,12 +381,11 @@ match returned_error {
 //we can use + to specify differnet types of traits
 // pub fn TooManyTraits(item1:&(impl CalculateArea,Display)){
 
-// } 
+// }
 
 // pub fn TooManyTraitsTwo<T:CalculateArea+Display>(items:&T){
 
 // }
-
 
 //  Using where clause
 // fn some_function<T:Display+CalculateArea,U:Clone+Debug>(t:&T,u:&U){
@@ -345,7 +397,6 @@ match returned_error {
 // where T:Display+Clone,U:Clone+Display{
 // 4
 // }
-
 
 // struct Point<T>{
 //     x:T,
