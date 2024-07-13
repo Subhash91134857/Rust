@@ -6,45 +6,78 @@
 
 // use std::{fmt::{Debug, Display}};
 
-use function::*;
+// use std::thread;
 
-mod function;
+// use function::*;
+mod closures;
 mod error;
-fn bar<T>(_:u32)->u32{
-0
-}
-fn foo(f:fn(u32)->u32){
-    println!("{}",std::mem::size_of_val(&f))
-}
+mod function;
+// fn bar<T>(_:u32)->u32{
+// 0
+// }
+// fn foo(f:fn(u32)->u32){
+//     println!("{}",std::mem::size_of_val(&f))
+// }
+
+
+
+
+
 fn main() {
+// Exloring closures, capturing references or moving ownership
+// A closure can capture values from environment in three ways,which directly map to the three ways a function can take parameter.
+// Immutable refrence
+// let  list=vec![1,3,4,5];
+// println!("Before defining closure: {list:?}");
+
+// let immutable_closure=|| println!("From closure: {list:?}");
+// println!("Before calling closure: {list:?}");
+// immutable_closure();
+// println!("After calling closure: {list:?}");
+
+// mutable
+// let mut mutable_closure=|| list.push(12);
+// //no other borrows are allowed when there’s a mutable borrow.
+// // println!("Before calling closure: {list:?}");
+// mutable_closure();
+// println!("After calling closure: {list:?}");
+// using move keyword
+// thread::spawn(move||println!("From closure: {list:?}")).join().unwrap();
+
+
+
+
+
+
+
+
     //  Function item;
-let  x=bar::<u32>;
-foo(bar::<u32>);
-println!("{}",std::mem::size_of_val(&x));
-// x=bar::<u32>;
+    // let  x=bar::<u32>;
+    // foo(bar::<u32>);
+    // println!("{}",std::mem::size_of_val(&x));
+    // x=bar::<u32>;
     //  Examining methods and assicated function of clousre module
 
-    let rectangle = Rectangle {
-        // Associated funcions are called using double colons
-        p1: Point::origin(),
-        p2: Point::new(3.0, 4.0),
-    };
-    // Methods are called using dot operator
-    println!("The area of the given rectangle: {}", rectangle.area());
-    println!(
-        "The perimeter of the given rectangle: {}",
-        rectangle.perimeter()
-    );
+    // let rectangle = Rectangle {
+    //     // Associated funcions are called using double colons
+    //     p1: Point::origin(),
+    //     p2: Point::new(3.0, 4.0),
+    // };
+    // // Methods are called using dot operator
+    // println!("The area of the given rectangle: {}", rectangle.area());
+    // println!(
+    //     "The perimeter of the given rectangle: {}",
+    //     rectangle.perimeter()
+    // );
 
-    let mut square = Rectangle {
-        p1: Point::origin(),
-        p2: Point::new(1.0, 1.0),
-    };
+    // let mut square = Rectangle {
+    //     p1: Point::origin(),
+    //     p2: Point::new(1.0, 1.0),
+    // };
     //if we try to call the translate function with rectangle then it will give error saying that it requires mutable variable
     //In transalte function we are taking slef as mutable self
     // rectangle.translate(1.0, 2.0);
-    square.translate(1.0, 2.0);
-
+    // square.translate(1.0, 2.0);
 
     //  Reading from the console
     // let mut line=String::new();

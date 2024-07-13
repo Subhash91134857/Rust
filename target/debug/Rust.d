@@ -1,1 +1,1 @@
-C:\Users\ASUS\Desktop\Rust\target\debug\Rust.exe: C:\Users\ASUS\Desktop\Rust\src\closure.rs C:\Users\ASUS\Desktop\Rust\src\error\mod.rs C:\Users\ASUS\Desktop\Rust\src\main.rs
+C:\Users\ASUS\Desktop\Rust\target\debug\Rust.exe: C:\Users\ASUS\Desktop\Rust\src\closures.rs C:\Users\ASUS\Desktop\Rust\src\error\mod.rs C:\Users\ASUS\Desktop\Rust\src\function.rs C:\Users\ASUS\Desktop\Rust\src\main.rs
